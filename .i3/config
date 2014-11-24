@@ -264,7 +264,7 @@ mode "mark_window" {
      bindsym KP_9 workspace 9
      bindsym KP_0 workspace 10
 
-     bindsym Return mode "default"
+     bindsym Return mod eC"default"
      bindsym Escape mode "default"
 }
 
@@ -274,9 +274,15 @@ mode "go_to_window" {
      bindsym 3 [con_mark="m3"] focus
      bindsym 4 [con_mark="m4"] focus
      bindsym 5 [con_mark="m5"] focus
+     bindsym KP_1 [con_mark="m1"] focus
+     bindsym KP_2 [con_mark="m2"] focus
+     bindsym KP_3 [con_mark="m3"] focus
+     bindsym KP_4 [con_mark="m4"] focus
+     bindsym KP_5 [con_mark="m5"] focus
+     # Disabled 'a' and 'b' to play better with Cmus in this mode
      bindsym a [con_mark="ma"] focus
-     bindsym b [con_mark="mb"] focus
-     bindsym c [con_mark="mc"] focus
+     #bindsym b [con_mark="mb"] focus
+     #bindsym c [con_mark="mc"] focus
      bindsym d [con_mark="md"] focus
      bindsym e [con_mark="me"] focus
 
