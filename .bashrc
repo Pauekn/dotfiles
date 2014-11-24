@@ -166,7 +166,7 @@ pa-playbackset() {
 #!/bin/bash
 
 anime-crunchyroll() { # {{{
-test
+# Not working
         keyword="$(echo "http://www.crunchyroll.com/search?from=videos&q=$@" | sed 's/ /\+/g')"
         # keyword="$(echo "http://www.xvideos.com/?k=$@" | sed 's/ /\+/g')"
 	pagenum=5
