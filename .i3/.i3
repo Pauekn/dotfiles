@@ -1,0 +1,1 @@
+/home/pauekn/.i3/
