@@ -264,7 +264,7 @@ mode "mark_window" {
      bindsym KP_9 workspace 9
      bindsym KP_0 workspace 10
 
-     bindsym Return mod eC"default"
+     bindsym Return mode "default"
      bindsym Escape mode "default"
 }
 
