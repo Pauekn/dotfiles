@@ -1,6 +1,6 @@
 alias mplay='mplayer -fs -msgcolor -msgmodule -nomouseinput -nolirc'
 alias countfiles='ls -1 | wc -l'
-alias hdmi='xrandr --output HDMI2 --mode 1360x768 --above eDP1'
+alias hdmi='xrandr --output HDMI2 --mode 1360x768 --above eDP1 && xrandr --output eDP1 --primary'
 
 # Sound control
 
