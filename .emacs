@@ -171,11 +171,11 @@
 ;; Create a function that inserts a line
 ;; 'above' the current cursor position.
 
-(defun my/insert-line-before(times)
+(defun my/insert-line-after(times)
   "Inserts a newline(s) above the line containing the cursor"
   (interactive "p")
   (save-excursion
-    (move-beginning-of-line 1)
+    (move-end-of-line 1)
     (newline times)))
 
 ;; Keybindings:
@@ -185,7 +185,7 @@
 (global-set-key (kbd "C-<up>") 'backward-page)
 (global-set-key (kbd "C-<down>") 'forward-page)
 
-(global-set-key (kbd "C-S-o") 'my/insert-line-before)
+(global-set-key (kbd "C-S-o") 'my/insert-line-after)
 
 (global-set-key (kbd "C-.") 'er/expand-region)
 
