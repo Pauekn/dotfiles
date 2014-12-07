@@ -23,6 +23,8 @@
                    slime
 		   linum-relative
 		   expand-region
+		   emmet-mode
+		   ace-jump-mode
                    ))
        (packages (remove-if 'package-installed-p packages)))
   (when packages
@@ -158,7 +160,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(inhibit-startup-screen t))
+ '(inhibit-startup-screen t)
+ '(send-mail-function (quote smtpmail-send-it))
+ '(smtpmail-smtp-server "smtp.gmail.com")
+ '(smtpmail-smtp-service 25))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -188,6 +193,8 @@
 (global-set-key (kbd "C-S-o") 'my/insert-line-after)
 
 (global-set-key (kbd "C-.") 'er/expand-region)
+
+(global-set-key (kbd "C-ø") 'ace-jump-mode)
 
 ;; Default browser
 (setq browse-url-browser-function 'browse-url-generic
