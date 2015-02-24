@@ -24,6 +24,7 @@ alias i3lock='i3lock --color 000000 --ignore-empty-password --no-unlock-indicato
 alias s="sudo"
 alias ic="ifconfig"
 
+alias anihilist='pushd . && cd ~/bin/anihilist && python3 anihilist.py'
 # Navigation
 alias .="cd -"
 alias ..="cd .."

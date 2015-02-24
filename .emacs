@@ -1,14 +1,14 @@
 ;; we can require features
 (require 'cl)
 (require 'package)
- 
+
 ;; add mirrors for list-packages
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
- 
+
 ;; needed to use things downloaded with the package manager
 (package-initialize)
- 
+
 ;; install some packages if missing
 (let* ((packages '(auto-complete
                    ido-vertical-mode
@@ -21,59 +21,60 @@
                    autopair
                    paredit
                    slime
-		   linum-relative
-		   expand-region
-		   emmet-mode
-		   ace-jump-mode
+                   linum-relative
+                   expand-region
+                   emmet-mode
+                   ace-jump-mode
+		   zencoding-mode
                    ))
        (packages (remove-if 'package-installed-p packages)))
   (when packages
     (package-refresh-contents)
     (mapc 'package-install packages)))
- 
+
 ;; no splash screen
 (setq inhibit-splash-screen t)
- 
+
 ;; show matching parenthesis
 (show-paren-mode 1)
- 
+
 ;; show column number in mode-line
 (column-number-mode 1)
- 
+
 ;; overwrite marked text
 (delete-selection-mode 1)
- 
+
 ;; enable ido-mode, changes the way files are selected in the minibuffer
 (ido-mode 1)
- 
+
 ;; use ido everywhere
 (ido-everywhere 1)
- 
+
 ;; show vertically
-;(ido-vertical-mode 1)
+                                        ;(ido-vertical-mode 1)
 
 ;; Global autopair-mode
-(autopair-global-mode 1) 
- 
+(autopair-global-mode 1)
+
 ;; use undo-tree-mode globally
 (global-undo-tree-mode 1)
- 
+
 ;; stop blinking cursor
-;(blink-cursor-mode 0)
- 
+                                        ;(blink-cursor-mode 0)
+
 ;; no menubar
 (menu-bar-mode 0)
- 
+
 ;; no toolbar either
 (tool-bar-mode 0)
- 
+
 ;; scrollbar? no
 (scroll-bar-mode 0)
- 
+
 ;; global-linum-mode shows line numbers in all buffers, exchange 0
 ;; with 1 to enable this feature
 (global-linum-mode 1)
- 
+
 ;; Enable relative line numbers
 (require 'linum-relative)
 
@@ -82,20 +83,20 @@
 
 ;; answer with y/n
 (fset 'yes-or-no-p 'y-or-n-p)
- 
+
 ;; choose a color-theme
 (load-theme 'monokai t)
- 
+
 ;; get the default config for auto-complete (downloaded with
 ;; package-manager)
 (require 'auto-complete-config)
- 
+
 ;; load the default config of auto-complete
 (ac-config-default)
- 
+
 ;; kills the active buffer, not asking what buffer to kill.
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
- 
+
 ;; adds all autosave-files (i.e #test.txt#, test.txt~) in one
 ;; directory, avoid clutter in filesystem.
 (defvar emacs-autosave-directory (concat user-emacs-directory "autosaves/"))
@@ -103,7 +104,7 @@
       `((".*" . ,emacs-autosave-directory))
       auto-save-file-name-transforms
       `((".*" ,emacs-autosave-directory t)))
- 
+
 ;; defining a function that sets more accessible keyboard-bindings to
 ;; hiding/showing code-blocs
 (defun hideshow-on ()
@@ -112,12 +113,12 @@
   (local-set-key (kbd "C-c <up>")    'hs-hide-all)
   (local-set-key (kbd "C-c <down>")  'hs-show-all)
   (hs-minor-mode t))
- 
+
 ;; now we have to tell emacs where to load these functions. Showing
 ;; and hiding codeblocks could be useful for all c-like programming
 ;; (java is c-like) languages, so we add it to the c-mode-common-hook.
 (add-hook 'c-mode-common-hook 'hideshow-on)
- 
+
 ;; adding shortcuts to java-mode, writing the shortcut folowed by a
 ;; non-word character will cause an expansion.
 (defun java-shortcuts ()
@@ -126,22 +127,22 @@
       ("sop" "System.out.printf" nil 0)
       ("sopl" "System.out.println" nil 0)))
   (abbrev-mode t))
- 
+
 ;; the shortcuts are only useful in java-mode so we'll load them to
 ;; java-mode-hook.
 (add-hook 'java-mode-hook 'java-shortcuts)
- 
+
 ;; defining a function that guesses a compile command and bindes the
 ;; compile-function to C-c C-c
 (defun java-setup ()
   (set (make-variable-buffer-local 'compile-command)
        (concat "javac " (buffer-name)))
   (local-set-key (kbd "C-c C-c") 'compile))
- 
+
 ;; this is a java-spesific function, so we only load it when entering
 ;; java-mode
 (add-hook 'java-mode-hook 'java-setup)
- 
+
 ;; defining a function that sets the right indentation to the marked
 ;; text, or the entire buffer if no text is selected.
 (defun tidy ()
@@ -152,7 +153,7 @@
     (whitespace-cleanup)
     (indent-region beg end nil)
     (untabify beg end)))
- 
+
 ;; bindes the tidy-function to C-TAB
 (global-set-key (kbd "<C-tab>") 'tidy)
 (custom-set-variables
@@ -183,6 +184,21 @@
     (move-end-of-line 1)
     (newline times)))
 
+;; Comments out the current line
+
+(fset 'my/comment-line
+      [
+       ?\M-\;    ;; comment-dwim
+       ?\C-      ;; set-mark-command
+       ?\C-b     ;; backward-char
+       ?\C-r     ;; isearch-backward
+       ?         ;; self-insert-command
+       ?\C-f     ;; forward-char
+       ?\C-w     ;; kill-region
+       ?\M-m     ;; back-to-indentation
+       ?\C-y     ;; yank
+       ])
+
 ;; Keybindings:
 (global-set-key (kbd "M-p") 'backward-paragraph)
 (global-set-key (kbd "M-n") 'forward-paragraph)
@@ -195,6 +211,10 @@
 (global-set-key (kbd "C-.") 'er/expand-region)
 
 (global-set-key (kbd "C-ø") 'ace-jump-mode)
+
+(global-set-key (kbd "C-;") 'my/comment-line)
+
+(global-set-key (kbd "C-c C-j") 'zencoding-expand-line)
 
 ;; Default browser
 (setq browse-url-browser-function 'browse-url-generic

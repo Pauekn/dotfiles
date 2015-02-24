@@ -27,3 +27,16 @@ xsetroot -solid "#000000"
 # Disable touchpad
 ## My touchpad is not working, so having it enabled causes a lot of trouble
 xinput --disable "SynPS/2 Synaptics TouchPad"
+
+# Turns off screensaver 
+xset s off
+
+# Remapping keys
+
+if [ -s ~/.Xmodmap ]; then
+    xmodmap ~/.Xmodmap
+fi
+
+setxkbmap -option caps:ctrl_modifier # Caps --> Ctrl
+xmodmap -e "keycode 37 = Escape NoSymbol Escape" # Ctrl_L --> Esc
+xmodmap -e "keycode 9 = Caps_Lock NoSymbol Caps_Lock" # Escape --> Caps_Lock

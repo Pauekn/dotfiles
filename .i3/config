@@ -212,7 +212,7 @@ bar {
 
 # Bind applications
 bindsym $mod+c exec chromium-browser
-bindsym $mod+t exec emacs24
+bindsym $mod+t exec sudo emacs
 bindsym $mod+Shift+t exec thunar
 bindsym $mod+Shift+f exec firefox
 
