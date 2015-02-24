@@ -41,31 +41,19 @@ bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+oslash focus right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+oslash move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+Shift+h split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -186,16 +174,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym oslash resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -253,10 +235,10 @@ mode "mark_window" {
      bindsym e mark me
 
      # Switch window
-     bindsym j focus left
-     bindsym k focus down
-     bindsym l focus up
-     bindsym oslash focus right
+     bindsym h focus left
+     bindsym j focus down
+     bindsym k focus up
+     bindsym l focus right
 
      # Switch to workspace
      bindsym KP_1 workspace 1
@@ -299,16 +281,16 @@ mode "go_to_window" {
 mode "navigation" {
 
      # Change focus
-     bindsym j focus left
-     bindsym k focus down
-     bindsym l focus up
-     bindsym oslash focus right
+     bindsym h focus left
+     bindsym j focus down
+     bindsym k focus up
+     bindsym l focus right
 
      # move focused window
-     bindsym Shift+j move left
-     bindsym Shift+k move down
-     bindsym Shift+l move up
-     bindsym Shift+oslash move right
+     bindsym Shift+h move left
+     bindsym Shift+j move down
+     bindsym Shift+k move up
+     bindsym Shift+l move right
 
      bindsym a focus parent
      
