@@ -81,8 +81,16 @@ export LANG=en_GB.UTF-8
 
 source $HOME/.bash_aliases
 
-# Vi keybindings
+# Vi modes
 bindkey -v
+
+# Adds keybindings
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
 
 # Remove lag when switching modes
 export KEYTIMEOUT=1
