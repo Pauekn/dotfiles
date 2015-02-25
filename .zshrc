@@ -81,6 +81,7 @@ export LANG=en_GB.UTF-8
 
 source $HOME/.bash_aliases
 
+### http://dougblack.io/words/zsh-vi-mode.html
 # Vi modes
 bindkey -v
 
@@ -91,6 +92,17 @@ bindkey '^?' backward-delete-char
 bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
+
+# Creates a widget to display my vi-like mode in terminal
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]% %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $(git_custom_status) $EPS1"
+    zle reset-prompt
+}
+
+# Attach widget
+zle -N zle-line-init
+zle -N zle-keymap-select
 
 # Remove lag when switching modes
 export KEYTIMEOUT=1
