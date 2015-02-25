@@ -80,3 +80,9 @@ export LANG=en_GB.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source $HOME/.bash_aliases
+
+# Vi keybindings
+bindkey -v
+
+# Remove lag when switching modes
+export KEYTIMEOUT=1
