@@ -1,0 +1,20 @@
+set relativenumber
+color peaksea
+
+" Disable arrow keys
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>
+
+inoremap <Up> <nop>
+inoremap <Down> <nop>
+inoremap <Left> <nop>
+inoremap <Right> <nop>
+
+set mouse=""
+inoremap jk <ESC>
+
+let mapleader=","
+
+map <Space> :
