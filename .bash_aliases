@@ -1,6 +1,9 @@
 alias mplay='mplayer -fs -msgcolor -msgmodule -nomouseinput -nolirc'
+alias mpv='mpv --osc=no'
 alias countfiles='ls -1 | wc -l'
 alias hdmi='xrandr --output HDMI2 --mode 1360x768 --above eDP1 && xrandr --output eDP1 --primary'
+alias fuck='sudo $(fc -ln -1)'
+alias lsusers="passwd.sh | grep -v -e '/false' -e '/nologin'"
 
 # Sound control
 
@@ -59,3 +62,13 @@ alias px="ps aux | grep"
 alias fhere="find . -name"
 
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
+
+alias astudio="/home/pauekn/bin/android-studio/bin/studio.sh &"
+
+## Random alias. Will be deleted in a few weeks
+alias bachelor='pushd && sudo mv ~/Downloads/sky_drone.rar /var/www/html/ ; sudo rm -R /var/www/html/sky_drone ; cd /var/www/html/ && sudo unrar e /var/www/html/sky_drone.rar && popd'
+alias simon='mysql -u root -h 109.189.87.141'
+alias cdskydrone='cd /var/www/html/sky_drone/src/skydrone/skydroneBundle/'
+alias cdhtml='cd /var/www/html/'
+alias cdtwig='cd /var/www/html/sky_drone/src/skydrone/skydroneBundle/Resources/views/Default'
+alias cdcontroller='cd /var/www/html/sky_drone/src/skydrone/skydroneBundle/Controller'

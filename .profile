@@ -21,11 +21,11 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-# Set black solid background colour
-xsetroot -solid "#000000"
+# Set black solid background colour 
+#xsetroot -solid "#000000"
 
 # Disable touchpad
-## My touchpad is not working, so having it enabled causes a lot of trouble
+## My touchpad is not working properly, so having it enabled causes a lot of trouble
 xinput --disable "SynPS/2 Synaptics TouchPad"
 
 # Turns off screensaver 
@@ -37,6 +37,12 @@ if [ -s ~/.Xmodmap ]; then
     xmodmap ~/.Xmodmap
 fi
 
-setxkbmap -option caps:ctrl_modifier # Caps --> Ctrl
-xmodmap -e "keycode 37 = Escape NoSymbol Escape" # Ctrl_L --> Esc
-xmodmap -e "keycode 9 = Caps_Lock NoSymbol Caps_Lock" # Escape --> Caps_Lock
+ # Caps --> Ctrl
+setxkbmap -option caps:ctrl_modifier
+ # Ctrl_L --> Esc
+xmodmap -e "keycode 37 = Escape NoSymbol Escape"
+ # Escape --> Caps_Lock
+xmodmap -e "keycode 9 = Caps_Lock NoSymbol Caps_Lock"
+
+# Sets the wallpaper
+feh --bg-scale ~/.wallpaper/wallpaper_world_of_warships_02_1360x768.jpg
